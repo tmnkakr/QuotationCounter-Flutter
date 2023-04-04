@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/db/db_cn.dart';
 import 'package:flutter_application_1/drop_down.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await MongoDatabase.connect();
   runApp(const MyApp());
 }
 
@@ -53,22 +56,22 @@ class FirstScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const DropDown()),
-              );
-            },
-            child: const Card(
-              child: SizedBox(
-                width: double.infinity,
-                height: 200,
-                child: Center(
-                  child: Text('Add Request Sale'),
-                ),
-              ),
-            ),
-          ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const DropDown()),
+                );
+              },
+              child: Card(
+                elevation: 4.0,
+                child: Container(
+                    color: Colors.red,
+                    padding: EdgeInsets.all(25.0),
+                    child: Text(
+                      "Add Quatation",
+                      // style: Theme.of(context).textTheme.headline6!.copyWith(color:Colors.white),
+                    )),
+              )),
           const SizedBox(height: 16),
           GestureDetector(
             child: const Card(

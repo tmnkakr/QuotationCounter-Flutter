@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/db/db_cn.dart' as M;
 
 class AddLb extends StatefulWidget {
   const AddLb({Key? key}) : super(key: key);
@@ -14,6 +15,12 @@ class _AddLb extends State<AddLb> {
   final List<Widget> _textFields = [];
   final TextEditingController _controller1 = TextEditingController();
   final TextEditingController _controller2 = TextEditingController();
+
+  void insertData() async {
+    // var id = M.ObjectId();
+    final data = M.MongoDatabase();
+    data.listItems();
+  }
 
   void _addTextFields() {
     setState(() {
@@ -78,8 +85,7 @@ class _AddLb extends State<AddLb> {
               onPressed: _addTextFields,
               child: const Text('Add Row'),
             ),
-            const SizedBox(height: 25.0),
-            const ElevatedButton(
+            const RaisedButton(
               onPressed: null,
               child: Text('Final Upload'),
             ),
